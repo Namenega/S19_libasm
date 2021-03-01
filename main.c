@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 12:25:28 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/26 18:46:13 by namenega         ###   ########.fr       */
+/*   Updated: 2021/03/01 16:24:03 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main(void)
 {
-	// int		fd;
+	int		fd;
 	// int		ret;
-	// char	*buf = malloc(1024);
+	char	*buf = malloc(1024);
 	char	*dest = malloc(sizeof(char) * 10);
 
 	printf("\n---------------------------------------------\n");
@@ -77,35 +77,34 @@ int main(void)
 	printf("		  FT_WRITE");
 	printf("\n---------------------------------------------\n");
 
-	// printf("\n[abcdef]    REAL : (%zd)    MINE : (%zd)\n", write(1, "abcdef\n", 7), ft_write(1, "abcdef\n", 7));
-	// printf("[abc def]    REAL : (%zd)     MINE : (%zd)\n", write(1, "abc def\n", 3), ft_write(1, "abc def\n", 3));
-	// printf("[]    REAL : (%zd)     MINE : (%zd)\n", write(1, "", 0), ft_write(1, "", 0));
+	printf("\n[abcdef]\nwrite    : [%zd]\nft_write : [%zd]\n----------\n", write(1, "abcdef\n", 7), ft_write(1, "abcdef\n", 7));
+	printf("\n[abc def]\nwrite    : [%zd]\nft_write : [%zd]\n----------\n", write(1, "abc def\n", 3), ft_write(1, "abc def\n", 3));
+	printf("[]\nwrite    : [%zd]\nft_write : [%zd]", write(1, "", 0), ft_write(1, "", 0));
 	printf("\n\n");
 
 	printf("\n---------------------------------------------\n");
 	printf("		  FT_READ");
 	printf("\n---------------------------------------------\n");
 
-	// fd = open("./ft_strcpy.s", O_RDONLY);
-	// errno = 0;
-	// printf("REAL\n\nret : |%zd|\nbuf : |%s|\n", read(fd, buf, 20), buf);
-	// printf("errno : |%d|\n", errno);
-	// close(fd);
-	// fd = open("./ft_strcpy.s", O_RDONLY);
-	// errno = 0;
-	// printf("MINE\n\nret : |%zd|\nbuf : |%s|\n", ft_read(fd, buf, 20), buf);
-	// printf("errno : |%d|\n", errno);
-	// close(fd);
+	//syscall = 0 = read
+	//syscall = 1 = write
+
+	fd = open("./ft_strcpy.s", O_RDONLY);
+	errno = 0;
+	printf("\nread    :\tret = [%zd]\tbuf = [%s]\terrno = [%d]\n", read(fd, buf, 20), buf, errno);
+	close(fd);
+	fd = open("./ft_strcpy.s", O_RDONLY);
+	errno = 0;
+	printf("\nft_read :\tret = [%zu]\tbuf = [%s]\terrno = [%d]\n----------\n", ft_read(fd, buf, 20), buf, errno);
+	close(fd);
 	printf("\n\n");
 
-	// fd = -1;
-	// errno = 0;
-	// printf("REAL\n\nret : |%zd|\nbuf : |%s|\n", read(fd, buf, 20), buf);
-	// printf("errno : |%d|\n", errno);
-	// errno = 0;
-	// printf("MINE\n\nret : |%zd|\nbuf : |%s|\n", ft_read(fd, buf, 30), buf);
-	// printf("errno : |%d|\n", errno);
-	// close(fd);
+	fd = -1;
+	errno = 0;
+	printf("\nread    :\tret = [%zd]\tbuf = [%s]\terrno = [%d]\n", read(fd, buf, 30), buf, errno);
+	errno = 0;
+	printf("\nft_read :\tret = [%zd]\tbuf = [%s]\terrno = [%d]\n----------\n", ft_read(fd, buf, 30), buf, errno);
+	close(fd);
 	printf("\n\n");
 	return (0);
 }
