@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 12:25:28 by namenega          #+#    #+#             */
-/*   Updated: 2021/03/01 16:24:03 by namenega         ###   ########.fr       */
+/*   Updated: 2021/03/02 13:27:43 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ int main(void)
 	printf("		  FT_READ");
 	printf("\n---------------------------------------------\n");
 
-	//syscall = 0 = read
-	//syscall = 1 = write
+	//syscall = 3 = read
+	//syscall = 4 = write
 
 	fd = open("./ft_strcpy.s", O_RDONLY);
 	errno = 0;
-	printf("\nread    :\tret = [%zd]\tbuf = [%s]\terrno = [%d]\n", read(fd, buf, 20), buf, errno);
+	printf("\nread    :\tret = [%zd]\tbuf = [%s]\terrno = [%d]\n", read(fd, buf, 15), buf, errno);
 	close(fd);
 	fd = open("./ft_strcpy.s", O_RDONLY);
 	errno = 0;
-	printf("\nft_read :\tret = [%zu]\tbuf = [%s]\terrno = [%d]\n----------\n", ft_read(fd, buf, 20), buf, errno);
+	printf("\nft_read :\tret = [%zu]\tbuf = [%s]\terrno = [%d]\n----------\n", ft_read(fd, buf, 15), buf, errno);
 	close(fd);
 	printf("\n\n");
 

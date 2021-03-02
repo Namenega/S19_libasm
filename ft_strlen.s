@@ -7,5 +7,5 @@ _loop:
 	cmp		byte [rdi + rax], 0 ; byte [xxx], on modifie les 8 derniers bits
 								; de l'adresse de [rdi + rax]
 								; rdi = 1er param
-	jne		_loop
+	jne		_loop	;si cmp !=, on recommence _loop
 	ret

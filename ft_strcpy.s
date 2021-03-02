@@ -1,6 +1,7 @@
 	global	_ft_strcpy
 
 _ft_strcpy:
+	push	rbx
 	xor		rax, rax				;on met rax a 0 -> bitshifting
 	xor		rbx, rbx
 	cmp		rdi, 0					;1er param = dest
@@ -17,4 +18,5 @@ _loop:
 	jmp		_loop
 _return:
 	mov		rax, rdi				;on met rdi dans rax (aka valeur de retour)
+	pop		rbx
 	ret

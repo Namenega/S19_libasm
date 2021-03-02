@@ -1,0 +1,7 @@
+https://www.cs.uaf.edu/2017/fall/cs301/lecture/09_11_registers.html
+
+https://www.tutorialspoint.com/assembly_programming/assembly_constants.htm
+
+https://www.keil.com/support/man/docs/armasm/armasm_dom1361289865686.htm
+
+https://beta.hackndo.com/assembly-basics/

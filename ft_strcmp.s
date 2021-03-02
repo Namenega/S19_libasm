@@ -1,6 +1,8 @@
 	global	_ft_strcmp
 
 _ft_strcmp:
+	push	rbx
+	push	rcx
 	mov		rax, -1		;on set rax a -1
 	xor		rbx, rbx	;on set rbx a 0
 	xor		rcx, rcx	;on set rcx a 0
@@ -25,12 +27,18 @@ _compare:
 	cmp		rax, 0		;on compare cette difference a 0
 	jg		_sup		;si rax > 0, on jump dans _sup
 	jl		_inf		;si rax < 0, on jump dans _inf
+	pop	rbx
+	pop	rcx
 	ret
 
 _sup:
 	mov		rax, 1		;return 1
+	pop	rbx
+	pop	rcx
 	ret
 
 _inf:
 	mov		rax, -1		;return -1
+	pop	rbx
+	pop	rcx
 	ret

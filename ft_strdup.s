@@ -4,6 +4,7 @@
 	extern	_ft_strcpy
 
 _ft_strdup:
+	push	rbx
 	xor		rax, rax		;init rax a 0
 	mov		rbx, rdi		;on met le rdi (1er param - char *s) dans rbx
 	cmp		rdi, 0			;cmp rdi à 0
@@ -19,8 +20,10 @@ _dup:
 	mov		rdi, rax			;rax dans rdi (futur dest - 1er param)
 	mov		rsi, rbx			;rbx = *s de base dans futur src (2eme param)
 	call	_ft_strcpy			;strcpy(rdi, rsi)
+	pop		rbx
 	ret
 
 _return:
-	mov		rax, -1			;return -1
+	mov		rax, 0			;return NULL
+	pop		rbx
 	ret
