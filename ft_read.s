@@ -7,9 +7,8 @@ _ft_read:
 	syscall					;appelle read
 	mov		rcx, rax		;rcx = rax
 	push	rcx				;garder rax en memoire, au dessus de la pile
-	; cmp		rsi, 0			;cmp le buffer (2nd param) à 0
 	jc		_ft_error		;si cmp =, go ft_error
-	mov		rax, 0x200005c		;check si le fd est bon, syscall = 72 (0x200005c) = fcntl
+	mov		rax, 0x200005c	;check si le fd est bon, syscall = 72 (0x200005c) = fcntl
 	mov		rsi, 1			;second param de fcntl doit être = 1
 	syscall					;appelle fcntl
 	cmp		rax, 0			;cmp rax à 0 (0 = absence d'erreur)
